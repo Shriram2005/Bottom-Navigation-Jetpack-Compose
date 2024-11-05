@@ -1,5 +1,6 @@
 package com.example.navigationpractice
 
+import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -28,13 +29,9 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-
-        // Transparent bg status bar
-        window.statusBarColor = Color.Transparent.toArgb()
+        window.statusBarColor = Color.Transparent.toArgb()        // Transparent bg status bar
         // Set black or white status bar icons  // true = black
-        WindowCompat.getInsetsController(window, window.decorView).isAppearanceLightStatusBars =
-            true // or false
-
+        WindowCompat.getInsetsController(window, window.decorView).isAppearanceLightStatusBars = true // or false
 
         setContent {
             MyApp()
@@ -43,6 +40,7 @@ class MainActivity : ComponentActivity() {
 }
 
 
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Preview
 @Composable
 private fun MyApp() {
@@ -50,8 +48,7 @@ private fun MyApp() {
     Scaffold(
         bottomBar = { BottomNavigationBar(navController = navController) }
     ) {
-        it
-        Column{
+        Column {
             NavigationGraph(navController = navController)
         }
     }
@@ -82,9 +79,9 @@ fun BottomNavigationBar(navController: NavController) {
                 onClick = {
                     navController.navigate(screen.route) {
                         // This will prevent multiple copies of the same destination being in the backstack
-//                        popUpTo(navController.graph.startDestinationId) {
-//                            saveState = true
-//                        }
+                        popUpTo(navController.graph.startDestinationId) {
+                            saveState = true
+                        }
                         // Avoid multiple copies of the same screen in the back stack
                         launchSingleTop = true
                         restoreState = true

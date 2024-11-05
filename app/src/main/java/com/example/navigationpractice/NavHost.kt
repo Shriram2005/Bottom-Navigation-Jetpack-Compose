@@ -28,9 +28,7 @@ sealed class Screen(
 ) {
     data object Home : Screen("home", "Home", Icons.Outlined.Home, Icons.Filled.Home)
     data object Profile : Screen("profile", "Profile", Icons.Outlined.Person, Icons.Filled.Person)
-    data object Favorite :
-        Screen("favorite", "Favorite", Icons.Outlined.FavoriteBorder, Icons.Outlined.Favorite)
-
+    data object Favorite : Screen("favorite", "Favorite", Icons.Outlined.FavoriteBorder, Icons.Outlined.Favorite)
     data object Mail : Screen("mail", "Mail", Icons.Outlined.Email, Icons.Filled.Email)
 }
 
